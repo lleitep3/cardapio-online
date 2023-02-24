@@ -1,0 +1,17 @@
+{
+  "name": "cardapio",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+
+  "scripts": {
+    "start": "",
+    "generate-dotenv": "sh ./generate-dotenv.sh"
+  },
+  "author": "Leandro Leite <lleitep3@leandroleite.dev>",
+  "license": "MIT"
+}

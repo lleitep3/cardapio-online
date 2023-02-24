@@ -1,0 +1,23 @@
+version: "3.4"
+services:
+  #  Consumer Python
+  server:
+    image: cardapio-server
+    container_name: cardapio-server
+    build:
+      target: local
+      dockerfile: .
+      context: .
+      args:
+        - ENV=local
+        - BUILDKIT_INLINE_CACHE=1
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/app
+

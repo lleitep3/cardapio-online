@@ -1,8 +1,8 @@
-# Cardapio online SERVER
+# Cardapio online PROXY
 
 ## Description
 
-It's the api for the cardapio online project.
+It's the proxy for the cardapio online project.
 
 ### Requirements
   - docker (all resources are conteinerized)

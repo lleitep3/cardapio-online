@@ -23,7 +23,8 @@ The setup script will:
 
 
 ## Resources
-  - [server](./server/README.md)
+  - [proxy](./packages/nginx/README.md)
+  - [server](./packages/server/README.md)
   - [web](./web/README.md)
 
 ## Technologies

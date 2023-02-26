@@ -6,7 +6,7 @@ services:
     container_name: cardapio-server
     build:
       target: local
-      dockerfile: .
+      dockerfile: Dockerfile
       context: .
       args:
         - ENV=local

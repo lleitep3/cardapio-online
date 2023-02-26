@@ -13,6 +13,6 @@
     "setup": "sh ./scripts/setup.sh",
     "generate-dotenv": "sh ./scripts/generate-dotenv.sh"
   },
-  "author": "Leandro Leite <lleitep3@leandroleite.dev>",
+  "author": "Leandro Leite <lleitep3@leandroleite.info>",
   "license": "MIT"
 }

@@ -1,0 +1,45 @@
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      # Prefix all commit messages with "npm: "
+      prefix: "[update github-actions deps]:"
+    assignees:
+      - "lleitep3"
+    target-branch: "develop"
+    labels:
+      - "ci/cd"
+      - "dependencies"
+
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/packages/web"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      # Prefix all commit messages with "npm: "
+      prefix: "[update npm deps]:"
+    assignees:
+      - "lleitep3"
+    target-branch: "develop"
+    labels:
+      - "server"
+      - "dependencies"
+
+  # Maintain dependencies for pip
+  - package-ecosystem: "pip"
+    directory: "/packages/server"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "[update pip deps]:"
+    assignees:
+      - "lleitep3"
+    target-branch: "develop"
+    labels:
+      - "pip"
+      - "dependencies"

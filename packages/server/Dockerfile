@@ -1,29 +1,30 @@
-# Build stage
-FROM python:3.12.0a5-slim as build
+FROM node:19-alpine3.17@sha256:667dc6ed8fc6623ccd21cb5fa355c90f848daaf5d6df96bc940869bfdf91c19a AS build
 
-WORKDIR /usr/app
-RUN python -m venv /usr/app/venv
-ENV PATH="/usr/app/venv/bin:$PATH"
+ENV NODE_ENV build
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt || exit 1
+WORKDIR /app
 
+COPY ./package.json .
+COPY ./yarn.lock .
 
-# Runtime stage
-FROM python:3.12.0a5-slim@sha256:746c2fa0bb938895a58b8a76e76cbce37ae5f339c4580c896021cf440bc766d6 as local
-WORKDIR /usr/app
-COPY --from=build /usr/app/venv ./venv
-COPY . .
+RUN yarn
 
-ENV PATH="/usr/app/venv/bin:$PATH"
-CMD [ "python3", "./run.py" ]
+# ###### Tests Image
+FROM build AS test
 
+COPY --from=build /app .
 
-# Runtime stage
-FROM python:3.12.0a5-slim@sha256:746c2fa0bb938895a58b8a76e76cbce37ae5f339c4580c896021cf440bc766d6 as production
-WORKDIR /usr/app
-COPY --from=build /usr/app/venv ./venv
-COPY . .
+ENV NODE_ENV test
 
-ENV PATH="/usr/app/venv/bin:$PATH"
-CMD [ "gunicorn", "--bind", "0.0.0.0:5000", "manage:app" ]
+CMD [ "sh", "-c", "yarn test"]
+
+# ###### Local Image
+FROM node:19-alpine3.17@sha256:667dc6ed8fc6623ccd21cb5fa355c90f848daaf5d6df96bc940869bfdf91c19a AS local
+
+ENV NODE_ENV local
+
+WORKDIR /app
+
+COPY --from=build /app .
+
+CMD ["sh", "-c", "yarn dev"]

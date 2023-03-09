@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "name": "root",
+      "path": ".",
+    },
+    {
+      "name": "server",
+      "path": "./packages/server/",
+    },
+    {
+      "name": "web",
+      "path": "./packages/web/",
+    },
+    {
+      "name": "proxy",
+      "path": "./packages/proxy/",
+    }
+  ],
+  "settings": {
+    "prettier.semi": false
+  }
+}

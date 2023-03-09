@@ -10,6 +10,7 @@ it's an online menu for restaurants, where the customer can order food and drink
   - bash (for to setup script)
   - node (for to run yarn commands)
 
+
 ## Installation
 
 ### Setup
@@ -22,15 +23,29 @@ The setup script will:
   - generate ssl files on `./nginx/ssl` folder
 
 
+## Running
+```bash
+$ yarn start
+```
+
 ## Resources
   - [proxy](./packages/nginx/README.md)
   - [server](./packages/server/README.md)
-  - [web](./web/README.md)
+  - [web](./packages/web/README.md)
+
 
 ## Technologies
+  - yarn
   - yarn workspaces
   - docker
-  - docker-compose
+  - docker compose
+  - nginx
   - python (flask)
   - typescript (react)
-  - nginx
+  - vite
+
+
+## Project Links
+  - [dbdiagram](https://dbdiagram.io/d/63fbee23296d97641d83dc78)
+  - [github](https://github.com/lleitep3/cardapio-online)
+  - [tasks](https://github.com/users/lleitep3/projects/2)

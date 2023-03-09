@@ -1,11 +1,10 @@
 version: "3.9"
 services:
-  # API Node
-  server:
-    image: cardapio-server
-    container_name: cardapio-server
+  #  Web Vite
+  web:
+    image: cardapio-web
+    container_name: cardapio-web
     build:
-      target: local
       dockerfile: Dockerfile
       context: .
       args:
@@ -13,9 +12,10 @@ services:
     env_file:
       - .env
     ports:
-      - "5000:5000"
+      - "8080:8080"
 
     volumes:
       - type: bind
-        source: ./src
-        target: /app/src
+        source: .
+        target: /app
+

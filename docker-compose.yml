@@ -12,19 +12,19 @@ services:
 
   proxy:
     extends:
-      file: ./packages/nginx/docker-compose.yml
+      file: ./packages/proxy/docker-compose.yml
       service: proxy
     depends_on:
       - server
     networks:
       - proxy-lan
 
-  # web:
-  #   extends:
-  #     file: ./packages/web/docker-compose.yml
-  #     service: server
-    # networks:
-    #   - proxy-lan
+  web:
+    extends:
+      file: ./packages/web/docker-compose.yml
+      service: web
+    networks:
+      - proxy-lan
 
 
 networks:

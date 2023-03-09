@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  proxy:
+    container_name: proxy
+    hostname: proxy
+    image: nginx:1-alpine
+    env_file:
+      - .env
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/includes:/etc/nginx/includes
+    restart: always

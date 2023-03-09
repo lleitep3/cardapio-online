@@ -9,7 +9,8 @@
   },
 
   "scripts": {
-    "start": "",
+    "start": "docker compose up",
+    "start:deamon": "docker compose up -d",
     "setup": "sh ./scripts/setup.sh",
     "generate-dotenv": "sh ./scripts/generate-dotenv.sh"
   },

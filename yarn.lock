@@ -2181,11 +2181,6 @@ color-name@~1.1.4:
   resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
-commander@^2.11.0:
-  version "2.20.3"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
-  integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
-
 commander@^4.0.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/commander/-/commander-4.1.1.tgz"
@@ -4797,13 +4792,6 @@ tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tsnodemon@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/tsnodemon/-/tsnodemon-1.2.2.tgz#9eef32f74e8abf7f4ac7bb7d224cb3f4bd2b877c"
-  integrity sha512-1ceEvuuihwQQMLCYrKuZi2i8pemhuMiCy1nPev59cJM7JLtz7txHX3WQyhcc6zOvyBjt1Gbcg5yd53QjEw046Q==
-  dependencies:
-    commander "^2.11.0"
 
 tsutils@^3.21.0:
   version "3.21.0"

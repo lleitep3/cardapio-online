@@ -5,8 +5,8 @@
       "path": ".",
     },
     {
-      "name": "server",
-      "path": "./packages/server/",
+      "name": "api",
+      "path": "./packages/api/",
     },
     {
       "name": "web",

@@ -1,12 +1,12 @@
 {
-  "name": "@cardapio/server",
+  "name": "@cardapio/api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node dist/app.js",
-    "build": "babel src --out-dir dist --no-copy-ignored",
-    "dev": "nodemon --watch 'src/' --exec 'ts-node src/app.ts' -e ts",
+    "start": "ts-node src/app.ts --transpile-only",
+    "dev": "nodemon src/app.ts",
+    "lint": "eslint . --fix",
     "test": "jest"
   },
   "author": "Leandro Leite <leandro@leandroleite.info>",
@@ -17,6 +17,7 @@
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
+    "@tsconfig/node18": "^1.0.1",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.4.0",
     "@typescript-eslint/eslint-plugin": "^5.54.0",

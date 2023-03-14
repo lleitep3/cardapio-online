@@ -1,0 +1,66 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: CARDAPIO API ACTIONS
+
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - "main"
+      - "develop"
+
+    paths:
+      - "packages/api/**"
+      - ".github/workflows/api.actions.yml"
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  IMAGE_NAME: cardapio-api
+  IMAGE_TAG: latest
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [19.x]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - run: yarn
+      - run: yarn test
+
+  login-ecr:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to ECR
+        uses: docker/login-action@v2
+        with:
+          registry: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION>.amazonaws.com
+          username: $AWS_ACCESS_KEY_ID
+          password: $AWS_SECRET_ACCESS_KEY
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          args: |
+            ENV: production
+          push: true
+          tags: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION>.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG

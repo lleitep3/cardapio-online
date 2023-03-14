@@ -6,7 +6,6 @@ updates:
     schedule:
       interval: "weekly"
     commit-message:
-      # Prefix all commit messages with "npm: "
       prefix: "[update github-actions deps]:"
     assignees:
       - "lleitep3"
@@ -15,31 +14,31 @@ updates:
       - "ci/cd"
       - "dependencies"
 
-  # Maintain dependencies for npm
+  # Maintain dependencies for web
   - package-ecosystem: "npm"
     directory: "/packages/web"
     schedule:
       interval: "weekly"
     commit-message:
       # Prefix all commit messages with "npm: "
-      prefix: "[update npm deps]:"
+      prefix: "[update cardapio-web npm deps]:"
     assignees:
       - "lleitep3"
     target-branch: "develop"
     labels:
-      - "server"
+      - "web"
       - "dependencies"
 
-  # Maintain dependencies for pip
-  - package-ecosystem: "pip"
-    directory: "/packages/server"
+  # Maintain dependencies for api
+  - package-ecosystem: "npm"
+    directory: "/packages/api"
     schedule:
       interval: "weekly"
     commit-message:
-      prefix: "[update pip deps]:"
+      prefix: "[update cardapio-api npm deps]:"
     assignees:
       - "lleitep3"
     target-branch: "develop"
     labels:
-      - "pip"
+      - "api"
       - "dependencies"

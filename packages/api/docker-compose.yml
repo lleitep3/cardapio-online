@@ -1,12 +1,19 @@
-version: '3.4'
-
+version: "3.9"
 services:
-  cardapioapi:
-    image: cardapioapi
+  # API Node
+  server:
+    image: cardapio-api
+    container_name: cardapio-api
     build:
+      target: production
+      dockerfile: Dockerfile
       context: .
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
+    env_file:
+      - .env
     ports:
-      - 5000:5000
+      - "5000:5000"
+
+    # volumes:
+    #   - type: bind
+    #     source: ./src
+    #     target: /app/src

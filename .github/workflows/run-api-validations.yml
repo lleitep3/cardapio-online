@@ -4,6 +4,14 @@
 name: CARDAPIO API ACTIONS
 
 on:
+  push:
+    branches:
+      - "main"
+      - "develop"
+
+    paths:
+      - "packages/api/**"
+      - ".github/workflows/api.actions.yml"
   pull_request:
     types:
       - opened

@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
 app.get('/healthcheck', (req, res) => {
   res.setHeader('Content-Type', 'application/json')
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+
   res.send({
     status: 'ok',
     env: config.env,

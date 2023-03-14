@@ -20,6 +20,7 @@ app.get('/healthcheck', (req, res) => {
   })
 })
 
+
 app.listen(config.port, '0.0.0.0', () => {
   console.log(`[${config.appName}][${config.env}] listening on port ${config.port}!`)
 })

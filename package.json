@@ -12,7 +12,8 @@
     "start": "docker compose up",
     "start:deamon": "docker compose up -d",
     "setup": "sh ./scripts/setup.sh",
-    "generate-dotenv": "sh ./scripts/generate-dotenv.sh"
+    "generate-dotenv": "sh ./scripts/generate-dotenv.sh",
+    "test:api": "jest --config ./packages/api/jest.config.js"
   },
   "author": "Leandro Leite <lleitep3@leandroleite.info>",
   "license": "MIT"

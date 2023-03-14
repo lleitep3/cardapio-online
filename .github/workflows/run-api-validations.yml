@@ -50,24 +50,24 @@ jobs:
           cache: 'yarn'
 
       - run: yarn
-      - run: yarn test
+      - run: yarn test:api
 
-  login-ecr:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Login to ECR
-        uses: docker/login-action@v2
-        with:
-          registry: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION>.amazonaws.com
-          username: $AWS_ACCESS_KEY_ID
-          password: $AWS_SECRET_ACCESS_KEY
+  # login-ecr:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Login to ECR
+  #       uses: docker/login-action@v2
+  #       with:
+  #         registry: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION>.amazonaws.com
+  #         username: $AWS_ACCESS_KEY_ID
+  #         password: $AWS_SECRET_ACCESS_KEY
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile
-          args: |
-            ENV: production
-          push: true
-          tags: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION>.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
+  #     - name: Build and push Docker image
+  #       uses: docker/build-push-action@v2
+  #       with:
+  #         context: .
+  #         file: ./Dockerfile
+  #         args: |
+  #           ENV: production
+  #         push: true
+  #         tags: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION>.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG

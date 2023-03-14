@@ -11,7 +11,7 @@ on:
 
     paths:
       - "packages/api/**"
-      - ".github/workflows/api.actions.yml"
+      - ".github/workflows/run-api-validations.yml"
   pull_request:
     types:
       - opened
@@ -21,7 +21,7 @@ on:
 
     paths:
       - "packages/api/**"
-      - ".github/workflows/api.actions.yml"
+      - ".github/workflows/run-api-validations.yml"
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -43,14 +43,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-
-      - run: yarn
-      - run: yarn test:api
+      - run: |
+          cd packages/api
+          yarn test
 
   # login-ecr:
   #   runs-on: ubuntu-latest

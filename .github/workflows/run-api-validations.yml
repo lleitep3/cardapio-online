@@ -45,6 +45,7 @@ jobs:
 
       - run: |
           cd packages/api
+          yarn
           yarn test
 
   # login-ecr:

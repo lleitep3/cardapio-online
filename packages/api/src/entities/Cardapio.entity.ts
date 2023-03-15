@@ -1,10 +1,11 @@
+import { Product } from "./Product.entity"
 
 export type CardapioItem = Product & { order: number }
 
 export class Cardapio {
   readonly id: number
   name: string
-  description: string = '-'
+  description = '-'
   items: CardapioItem[] = []
   status: 'active' | 'inactive' = 'active'
   createdAt: Date

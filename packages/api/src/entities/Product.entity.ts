@@ -1,9 +1,9 @@
 
-class Product {
+export class Product {
   readonly id: number
   name: string
   price: number
-  description: string = '-'
+  description = '-'
   images: string[] = []
 
   private constructor(name: string, price: number, description: string) {

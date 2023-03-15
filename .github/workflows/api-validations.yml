@@ -1,17 +1,6 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: CARDAPIO API ACTIONS
+name: cardapio-api Validations
 
 on:
-  push:
-    branches:
-      - "main"
-      - "develop"
-
-    paths:
-      - "packages/api/**"
-      - ".github/workflows/run-api-validations.yml"
   pull_request:
     types:
       - opened
@@ -22,14 +11,6 @@ on:
     paths:
       - "packages/api/**"
       - ".github/workflows/run-api-validations.yml"
-
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-  AWS_REGION: ${{ vars.AWS_REGION }}
-  IMAGE_NAME: cardapio-api
-  IMAGE_TAG: latest
 
 jobs:
   validations:

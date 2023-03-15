@@ -45,10 +45,10 @@ jobs:
           docker compose -f ./docker-compose.test.yml up --build --detach --remove-orphans
 
       - name: "Run lint"
-        run: yarn lint
+        run: docker run cardapio-api-test yarn lint
 
       - name: "Run tests"
-        run: yarn test:docker
+        run: docker run cardapio-api-test yarn test
 
   # login-ecr:
   #   runs-on: ubuntu-latest

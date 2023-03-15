@@ -1,9 +1,9 @@
 import { IApi } from "./i-api"
-import { config } from "../../config"
+import { config } from "../../configs/config"
 import { Express, Request, Response } from "express"
 
 export class HealthcheckAPI implements IApi {
-  configure(app: Express): void {
+  static configure(app: Express): void {
 
     app.get('/healthcheck', (req: Request, res: Response) => {
       res.setHeader('Content-Type', 'application/json')

@@ -1,16 +1,15 @@
 
 export class Product {
   readonly id: number
-  name: string
-  price: number
-  description = '-'
   images: string[] = []
 
-  private constructor(name: string, price: number, description: string) {
+  private constructor(
+    public readonly name: string = 'no name',
+    public readonly price: number = 0,
+    public readonly description: string = 'no description',
+    public readonly createdAt: Date = new Date()
+  ) {
     this.id = Math.floor(Math.random() * 1000)
-    this.name = name
-    this.price = price
-    this.description = description
   }
 
   static create(name: string, price: number, description: string) {

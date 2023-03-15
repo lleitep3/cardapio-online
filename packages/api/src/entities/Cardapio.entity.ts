@@ -4,18 +4,15 @@ export type CardapioItem = Product & { order: number }
 
 export class Cardapio {
   readonly id: number
-  name: string
-  description = '-'
-  items: CardapioItem[] = []
   status: 'active' | 'inactive' = 'active'
-  createdAt: Date
 
-  private constructor(name: string, description: string, items: CardapioItem[]) {
+  private constructor(
+    public readonly name: string = 'no name',
+    public readonly description: string = 'no description',
+    public readonly items: CardapioItem[] = [],
+    public readonly createdAt: Date = new Date()
+  ) {
     this.id = Math.floor(Math.random() * 1000)
-    this.name = name
-    this.description = description
-    this.items = items
-    this.createdAt = new Date()
   }
 
   static create(name: string, description: string, items: CardapioItem[]) {

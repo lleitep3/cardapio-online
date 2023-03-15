@@ -7,8 +7,19 @@
     "paths": {
       "@/*": [
         "*"
-      ]
+      ],
+      "@externals/*": [
+        "./externals/*"
+      ],
+      "@configs/*": [
+        "./configs/*"
+      ],
     }
+  },
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
   },
   "include": [
     "src/**/*"

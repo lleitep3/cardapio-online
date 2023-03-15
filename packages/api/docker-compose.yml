@@ -4,7 +4,7 @@ services:
 
   api:
     depends_on:
-      - local-mongo
+      - local-mongodb
 
     image: cardapio-api
     container_name: cardapio-api
@@ -24,8 +24,10 @@ services:
       - type: bind
         source: ./src
         target: /app/src
+    networks:
+      - proxy-lan
 
-  local-mongo:
+  local-mongodb:
     image: mongo
     container_name: local-mongodb
     ports:
@@ -33,6 +35,14 @@ services:
     volumes:
       - mongodata:/data/db
     restart: always
+    networks:
+      - proxy-lan
 
 volumes:
   mongodata:
+
+
+networks:
+  proxy-lan:
+    external: true
+    name: proxy-lan

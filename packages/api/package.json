@@ -8,7 +8,7 @@
     "dev": "nodemon src/app.ts",
     "lint": "eslint . --fix",
     "test": "jest",
-    "test:docker": "docker compose -f ./docker-compose.test.yml up --build --detach --remove-orphans && docker run cardapio-api-test"
+    "test:docker": "docker compose -f ./docker-compose.test.yml up --build --detach --remove-orphans"
   },
   "author": "Leandro Leite <leandro@leandroleite.info>",
   "license": "ISC",

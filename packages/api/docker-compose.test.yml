@@ -7,6 +7,8 @@ services:
       target: test
       dockerfile: Dockerfile
       context: .
-    env_file:
-      - .env
-    command: ["yarn", "test"]
+    environment:
+      - NODE_ENV=test
+      - PORT=5000
+      - APP_NAME=cardapio-api
+    command: [ "yarn", "test" ]

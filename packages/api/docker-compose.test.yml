@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  api:
+    image: cardapio-api-test
+    container_name: cardapio-api-test
+    build:
+      target: test
+      dockerfile: Dockerfile
+      context: .
+    env_file:
+      - .env
+    command: ["yarn", "test"]

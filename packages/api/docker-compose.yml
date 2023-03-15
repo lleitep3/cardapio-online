@@ -1,19 +1,34 @@
 version: "3.9"
 services:
   # API Node
-  server:
+
+  api:
+    depends_on:
+      - local-mongo
+
     image: cardapio-api
     container_name: cardapio-api
     build:
-      target: production
+      target: local
       dockerfile: Dockerfile
       context: .
     env_file:
       - .env
     ports:
       - "5000:5000"
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
 
-    # volumes:
-    #   - type: bind
-    #     source: ./src
-    #     target: /app/src
+  local-mongo:
+    image: mongo
+    container_name: local-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    restart: always
+
+volumes:
+  mongodata:

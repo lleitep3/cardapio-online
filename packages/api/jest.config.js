@@ -9,4 +9,9 @@ module.exports = {
   testEnvironment: "node",
   // A preset that is used as a base for Jest's configuration
   preset: 'ts-jest',
+  // A map from regular expressions to paths to transformers
+
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
 };

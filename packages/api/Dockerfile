@@ -3,6 +3,8 @@ FROM node:19-alpine3.17@sha256:667dc6ed8fc6623ccd21cb5fa355c90f848daaf5d6df96bc9
 WORKDIR /app
 
 COPY ./package.json .
+COPY ./tsconfig.json .
+COPY ./jest.config.js .
 COPY ./yarn.lock .
 COPY ./src ./src
 
@@ -12,10 +14,6 @@ RUN yarn
 FROM base AS test
 
 ENV NODE_ENV test
-COPY --from=base /app/package.json /app/package.json
-COPY --from=base /app/node_modules /app/node_modules
-COPY --from=base /app/tests /app/tests
-COPY --from=base /app/src /app/src
 
 CMD [ "sh", "-c", "yarn test"]
 
@@ -23,10 +21,6 @@ CMD [ "sh", "-c", "yarn test"]
 FROM base AS local
 
 ENV NODE_ENV local
-
-COPY --from=base /app/package.json /app/package.json
-COPY --from=base /app/node_modules /app/node_modules
-COPY --from=base /app/src /app/src
 
 CMD ["sh", "-c", "yarn dev"]
 

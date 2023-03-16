@@ -1,4 +1,4 @@
-import { Cardapio } from "@/entities/Cardapio.entity"
+import { Cardapio } from "@/app/entities/Cardapio.entity"
 
 export interface ICardapioRepository {
   create(data: Cardapio): Promise<Cardapio | null>

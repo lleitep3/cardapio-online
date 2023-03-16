@@ -1,4 +1,4 @@
-import { config } from "@/configs/config"
+import { config } from "@configs/config"
 import mongoose from "mongoose"
 
 export const connect = async () => {

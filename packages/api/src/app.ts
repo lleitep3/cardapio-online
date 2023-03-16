@@ -1,18 +1,24 @@
 import express from 'express'
 import { CARDAPIO_TRANSLATIONS } from './cardapio-translations'
 import { config } from '@configs/config'
-import { CardapioAPI } from '@externals/api/cardapio.api'
-import { HealthcheckAPI } from '@externals/api/healthcheck.api'
-import { connect } from '@externals/mongodb/connect'
+import { CardapioAPI } from '@/externals/http/cardapio.api'
+import { HealthcheckAPI } from '@/externals/http/healthcheck.api'
+import { connect } from '@/externals/database/connect'
+import { SwaggerAPI } from './externals/swagger/swagger.api'
 
 // connect to mongodb
 connect()
 
 const app = express()
 
+
 app.get('/', (req, res) => {
   res.json(CARDAPIO_TRANSLATIONS)
 })
+
+if (config.env !== 'production') {
+  SwaggerAPI.configure(app)
+}
 
 // configure healthcheck endpoint
 HealthcheckAPI.configure(app)

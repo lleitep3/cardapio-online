@@ -1,0 +1,10 @@
+{
+  "swagger": {
+      "outputDirectory": "./src/external/swagger/",
+      "entryFile": "./src/app.ts",
+      "decoratorConfig": {
+          "useBuildIn": true,
+          "useLibrary": ["typescript-rest", "@decorators/express"]
+      }
+  }
+}

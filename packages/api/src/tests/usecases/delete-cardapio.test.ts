@@ -1,10 +1,10 @@
-import { ICardapioRepository } from "@/interfaces/i-cardapio-repository"
-import { DeleteCardapioUseCase } from "@/usecases/delete-cardapio"
+import { ICardapioRepository } from "@/app/interfaces/i-cardapio-repository"
+import { DeleteCardapioUseCase } from "@/app/usecases/delete-cardapio"
 
 const cardapioRepository: ICardapioRepository = {
   create: jest.fn(),
   find: jest.fn(),
-  findAll: jest.fn(),
+  list: jest.fn(),
   delete: jest.fn().mockImplementation((id) => id === 1
     ? Promise.resolve(true)
     : Promise.reject(new Error('unable to delete cardapio'))),

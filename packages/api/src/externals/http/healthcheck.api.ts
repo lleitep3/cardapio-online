@@ -1,5 +1,5 @@
 import { IApi } from "./i-api"
-import { config } from "../../configs/config"
+import { config } from "@configs/config"
 import { Express, Request, Response } from "express"
 
 export class HealthcheckAPI implements IApi {

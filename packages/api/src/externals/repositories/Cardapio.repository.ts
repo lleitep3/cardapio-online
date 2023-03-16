@@ -1,6 +1,6 @@
 import { Cardapio } from "@/entities/Cardapio.entity"
 import { ICardapioRepository } from "@/interfaces/i-cardapio-repository"
-import { CardapioModel } from "@/externals/mongodb/Cardapio.model"
+import { CardapioModel } from "@/externals/database/Cardapio.model"
 
 export class CardapioRepository implements ICardapioRepository {
   async find(id: number): Promise<Cardapio | null> {

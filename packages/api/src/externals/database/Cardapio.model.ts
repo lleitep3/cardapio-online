@@ -1,4 +1,4 @@
-import { Cardapio, CardapioItem } from '@/entities/Cardapio.entity'
+import { Cardapio, CardapioItem } from '@/app/entities/Cardapio.entity'
 import { model, Schema } from 'mongoose'
 
 const CardapioItemSchema = new Schema<CardapioItem>({

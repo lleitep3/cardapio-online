@@ -1,5 +1,5 @@
-import { ICardapioRepository } from "@/interfaces/i-cardapio-repository"
-import IUseCase from "@/interfaces/i-usecase"
+import { ICardapioRepository } from "@/app/interfaces/i-cardapio-repository"
+import IUseCase from "@/app/interfaces/i-usecase"
 
 type DeleteCardapioParams = {
   cardapioRepository: ICardapioRepository,

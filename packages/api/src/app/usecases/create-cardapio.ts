@@ -1,6 +1,6 @@
-import { Cardapio, CardapioItem } from "@/entities/Cardapio.entity"
-import { ICardapioRepository } from "@/interfaces/i-cardapio-repository"
-import IUseCase from "@/interfaces/i-usecase"
+import { Cardapio, CardapioItem } from "@/app/entities/Cardapio.entity"
+import { ICardapioRepository } from "@/app/interfaces/i-cardapio-repository"
+import IUseCase from "@/app/interfaces/i-usecase"
 
 type CreateCardapioParams = {
   cardapioRepository: ICardapioRepository,

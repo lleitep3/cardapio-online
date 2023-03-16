@@ -1,4 +1,4 @@
-import { Product } from '@/entities/Product.entity'
+import { Product } from '@/app/entities/Product.entity'
 import { Schema, model } from 'mongoose'
 
 const ProductSchema = new Schema<Product>({

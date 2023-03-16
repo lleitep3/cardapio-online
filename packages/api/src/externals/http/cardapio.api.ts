@@ -1,7 +1,7 @@
 import { IApi } from "./i-api"
 import { Express, Request, Response } from "express"
 import { CardapioRepository } from "@/externals/repositories/Cardapio.repository"
-import { Cardapio } from "@/entities/Cardapio.entity"
+import { Cardapio } from "@/app/entities/Cardapio.entity"
 
 class CardapioController {
   async list(req: Request, res: Response) {

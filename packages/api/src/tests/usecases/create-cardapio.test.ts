@@ -1,5 +1,5 @@
-import { ICardapioRepository } from "@/interfaces/i-cardapio-repository"
-import CreateCardapiosUseCase from "@/usecases/create-cardapio"
+import { ICardapioRepository } from "@/app/interfaces/i-cardapio-repository"
+import CreateCardapiosUseCase from "@/app/usecases/create-cardapio"
 
 const cardapioRepository: ICardapioRepository = {
   create: jest.fn().mockImplementation((cardapio) => cardapio.name === 'Cardapio 1'
@@ -7,7 +7,7 @@ const cardapioRepository: ICardapioRepository = {
     : Promise.reject(new Error('Cardapio already exists'))),
 
   find: jest.fn(),
-  findAll: jest.fn(),
+  list: jest.fn(),
   delete: jest.fn()
 }
 

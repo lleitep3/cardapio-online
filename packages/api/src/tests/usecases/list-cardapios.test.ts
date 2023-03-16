@@ -1,5 +1,5 @@
-import { ICardapioRepository } from "@/interfaces/i-cardapio-repository"
-import { ListCardapiosUseCase } from "@/usecases/list-cardapios"
+import { ICardapioRepository } from "@/app/interfaces/i-cardapio-repository"
+import { ListCardapiosUseCase } from "@/app/usecases/list-cardapios"
 
 describe('List cardapios', () => {
   it('should list a cardapio', async () => {
@@ -8,7 +8,7 @@ describe('List cardapios', () => {
       create: jest.fn(),
       find: jest.fn(),
       delete: jest.fn(),
-      findAll: jest.fn().mockImplementation(() => Promise.resolve([
+      list: jest.fn().mockImplementation(() => Promise.resolve([
         {
           id: 1,
           name: 'Cardapio 1',
@@ -40,7 +40,7 @@ describe('List cardapios', () => {
       create: jest.fn(),
       find: jest.fn(),
       delete: jest.fn(),
-      findAll: jest.fn().mockImplementation(() => Promise.resolve([]))
+      list: jest.fn().mockImplementation(() => Promise.resolve([]))
     }
 
     const useCase = new ListCardapiosUseCase()

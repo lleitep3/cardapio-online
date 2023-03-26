@@ -12,7 +12,7 @@ export class ListCardapiosUseCase implements IUseCase<ListCardapiosParams, Carda
     const { cardapioRepository } = params
 
     try {
-      const cardapios = await cardapioRepository.findAll()
+      const cardapios = await cardapioRepository.list()
 
       return cardapios
     } catch (error) {

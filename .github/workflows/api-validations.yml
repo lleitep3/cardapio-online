@@ -10,7 +10,7 @@ on:
 
     paths:
       - "packages/api/**"
-      - ".github/workflows/run-api-validations.yml"
+      - ".github/workflows/api-validations.yml"
 
 jobs:
   validations:

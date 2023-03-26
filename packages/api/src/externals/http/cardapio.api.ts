@@ -2,14 +2,20 @@ import { IApi } from "./i-api"
 import { Express, Request, Response } from "express"
 import { CardapioRepository } from "@/externals/repositories/Cardapio.repository"
 import { Cardapio } from "@/app/entities/Cardapio.entity"
+import CreateCardapiosUseCase from "@/app/usecases/create-cardapio"
+import { DeleteCardapioUseCase } from "@/app/usecases/delete-cardapio"
+import { ListCardapiosUseCase } from "@/app/usecases/list-cardapios"
 
 class CardapioController {
   async list(req: Request, res: Response) {
     try {
       const cardapioRepository = new CardapioRepository()
-      const cardapios = await cardapioRepository.list()
 
-      res.json({ status: 'list ok', cardapios })
+      const result = new ListCardapiosUseCase().execute({
+        cardapioRepository
+      })
+
+      res.json({ status: 'list ok', cardapios: result })
     } catch (error) {
       console.error(error)
       res.status(500).json({ status: 'error', error })
@@ -18,12 +24,13 @@ class CardapioController {
 
   async create(req: Request, res: Response) {
     try {
-      const cardapioRepository = new CardapioRepository()
-      const { name, description, items } = req.body
-      const cardapio = Cardapio.create(name, description, items)
-      const newCardapio = await cardapioRepository.create(cardapio)
 
-      res.json({ status: 'ok', newCardapio })
+      const result = new CreateCardapiosUseCase().execute({
+        cardapioRepository: new CardapioRepository(),
+        data: req.body
+      })
+
+      res.json({ status: 'ok', data: result })
     } catch (error) {
       console.error(error)
       res.status(500).json({ status: 'error', error })
@@ -32,11 +39,13 @@ class CardapioController {
 
   async delete(req: Request, res: Response) {
     try {
-      const cardapioRepository = new CardapioRepository()
-      const { id } = req.body
-      const deleted = await cardapioRepository.delete(id)
 
-      res.json({ status: 'ok', deleted })
+      const result = new DeleteCardapioUseCase().execute({
+        cardapioRepository: new CardapioRepository(),
+        id: req.params.id
+      })
+
+      res.json({ status: 'ok', data: result })
     } catch (error) {
       console.error(error)
       res.status(500).json({ status: 'error', error })

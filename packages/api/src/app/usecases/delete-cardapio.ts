@@ -3,7 +3,7 @@ import IUseCase from "@/app/interfaces/i-usecase"
 
 type DeleteCardapioParams = {
   cardapioRepository: ICardapioRepository,
-  id: number
+  id: string
 }
 
 export class DeleteCardapioUseCase implements IUseCase<DeleteCardapioParams, boolean> {
